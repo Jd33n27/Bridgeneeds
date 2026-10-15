@@ -1,0 +1,225 @@
+.dashboard-page-root {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-16);
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.dashboard-header-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+@media (min-width: 640px) {
+  .dashboard-header-bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.dashboard-kicker {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-brand-700);
+}
+
+.dashboard-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.talent-profile-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.talent-avatar-sm {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  border: 2px solid var(--border-focus);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 640px) {
+  .metrics-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.metric-card {
+  padding: var(--space-6);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  box-shadow: var(--shadow-sm);
+}
+
+.metric-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.metric-val {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--text-primary);
+}
+
+.metric-sub {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.text-brand {
+  color: var(--color-brand-700);
+  font-weight: 700;
+}
+
+.dashboard-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.section-header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.projects-grid, .proposals-list, .open-briefs-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.open-brief-card {
+  padding: var(--space-6);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .open-brief-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.brief-category-tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  background-color: var(--accent-highlight-bg);
+  color: var(--color-evergreen-950);
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: var(--space-1);
+}
+
+.brief-title {
+  font-size: 1.125rem;
+  font-weight: 800;
+
+  color: var(--text-primary);
+}
+
+.brief-client-info {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.brief-card-budget {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.budget-range {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--color-brand-700);
+}
+
+.deadline-tag {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.briefs-table-wrapper {
+  overflow-x: auto;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+}
+
+.briefs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  text-align: left;
+}
+
+.briefs-table th, .briefs-table td {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.briefs-table th {
+  background-color: var(--bg-surface-subtle);
+  font-weight: 700;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.proposals-count-badge {
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-surface-subtle);
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.status-pill {
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.status-pill.open {
+  background-color: var(--accent-highlight-bg);
+  color: var(--color-evergreen-950);
+}

@@ -1,0 +1,139 @@
+.proposal-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  box-shadow: var(--shadow-sm);
+}
+
+.proposal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.proposal-talent-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.proposal-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.proposal-talent-name {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.proposal-talent-role {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.proposal-quote-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.quote-amount {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-brand-700);
+}
+
+.quote-days {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.proposal-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.proposal-cover-letter {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.proposed-milestones-box {
+  background-color: var(--bg-surface-subtle);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.milestones-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.milestones-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.milestone-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+}
+
+.m-title {
+  color: var(--text-secondary);
+}
+
+.m-amount {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.proposal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+}
+
+.proposal-status-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-xs);
+  align-self: flex-end;
+}
+
+.status-accepted {
+  background-color: var(--color-lime-200);
+  color: var(--color-evergreen-950);
+}
+.status-declined {
+  background-color: rgba(180, 35, 24, 0.1);
+  color: var(--color-error);
+}

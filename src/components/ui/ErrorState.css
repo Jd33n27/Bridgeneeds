@@ -1,0 +1,36 @@
+.error-state-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-8) var(--space-6);
+  background-color: rgba(180, 35, 24, 0.04);
+  border: 1px solid rgba(180, 35, 24, 0.2);
+  border-radius: var(--radius-md);
+  gap: var(--space-3);
+  margin: var(--space-4) 0;
+}
+
+.error-icon-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: rgba(180, 35, 24, 0.1);
+  color: var(--color-error);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-error);
+}
+
+.error-message {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  max-width: 400px;
+}

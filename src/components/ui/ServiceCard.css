@@ -1,0 +1,149 @@
+.service-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.service-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-strong);
+}
+
+.service-cover-wrapper {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+
+.service-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.service-card:hover .service-cover-img {
+  transform: scale(1.05);
+}
+
+.service-category-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: var(--color-evergreen-950);
+  color: var(--color-warm-white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.service-card-content {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--space-3);
+  justify-content: space-between;
+}
+
+.service-provider-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.provider-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.provider-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.provider-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.provider-role {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.service-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  transition: color var(--transition-fast);
+}
+
+.service-title:hover {
+  color: var(--color-brand-600);
+}
+
+.service-short-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.service-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.8rem;
+}
+
+.service-delivery {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-muted);
+}
+
+.service-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-2);
+}
+
+.price-tag {
+  display: flex;
+  align-baseline;
+  gap: 4px;
+}
+
+.from-text {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.price-amount {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}

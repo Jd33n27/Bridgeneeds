@@ -1,0 +1,218 @@
+.talent-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-3);
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.talent-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-strong);
+}
+
+.talent-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.talent-avatar-wrapper {
+  position: relative;
+}
+
+.talent-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--bg-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.remote-status-badge {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  background-color: var(--color-evergreen-950);
+  color: var(--color-lime-400);
+  padding: 1px 6px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.favorite-btn {
+  color: var(--text-muted);
+  padding: 6px;
+  border-radius: 50%;
+  transition: all var(--transition-fast);
+}
+
+.favorite-btn:hover {
+  background-color: var(--bg-surface-hover);
+  color: var(--color-brand-600);
+}
+
+.favorite-btn.is-favorite {
+  color: var(--color-brand-600);
+}
+
+.talent-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.talent-title-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.talent-name {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  transition: color var(--transition-fast);
+}
+
+.talent-name:hover {
+  color: var(--color-brand-600);
+}
+
+.talent-role {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-brand-700);
+}
+
+.talent-meta-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.talent-location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.talent-bio-snippet {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 2px;
+}
+
+.talent-verifications {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.talent-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.genre-pill {
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: var(--bg-surface-subtle);
+  color: var(--text-secondary);
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+}
+
+.skill-pill {
+  font-size: 0.75rem;
+  background-color: var(--bg-surface);
+  border: 1px dashed var(--border-subtle);
+  color: var(--text-muted);
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+}
+
+.featured-sample-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  width: 100%;
+  padding: 6px 10px;
+  background-color: var(--color-lime-200);
+  color: var(--color-evergreen-950);
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-top: 4px;
+  transition: background-color var(--transition-fast);
+}
+
+.featured-sample-btn:hover {
+  background-color: var(--color-lime-400);
+}
+
+.sample-play-icon {
+  fill: currentColor;
+}
+
+.sample-duration {
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.talent-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.rate-box {
+  display: flex;
+  align-baseline;
+  gap: 2px;
+}
+
+.rate-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-right: 4px;
+}
+
+.rate-price {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.rate-unit {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}

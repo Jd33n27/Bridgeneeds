@@ -1,0 +1,103 @@
+.search-bar-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.search-bar-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  background-color: var(--bg-surface);
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-md);
+}
+
+@media (min-width: 640px) {
+  .search-bar-form {
+    flex-direction: row;
+    align-items: center;
+    border-radius: var(--radius-full);
+    padding: 6px 8px 6px 20px;
+  }
+}
+
+.search-bar-input-box {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: var(--space-2);
+}
+
+.search-bar-icon {
+  color: var(--color-brand-600);
+  flex-shrink: 0;
+}
+
+.search-bar-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 1.05rem;
+  padding: 10px 0;
+}
+
+.search-bar-input:focus {
+  outline: none;
+}
+
+.search-bar-clear-btn {
+  color: var(--text-muted);
+  padding: 4px;
+  border-radius: 50%;
+  transition: background-color var(--transition-fast);
+}
+
+.search-bar-clear-btn:hover {
+  background-color: var(--bg-surface-hover);
+  color: var(--text-primary);
+}
+
+.search-examples {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  padding-left: var(--space-2);
+}
+
+.search-examples-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.search-examples-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.example-pill {
+  font-size: 0.8rem;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-surface-subtle);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  transition: all var(--transition-fast);
+}
+
+.example-pill:hover {
+  background-color: var(--color-lime-200);
+  color: var(--color-evergreen-950);
+  border-color: var(--color-lime-400);
+}

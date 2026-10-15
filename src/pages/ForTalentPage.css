@@ -1,0 +1,108 @@
+.for-talent-page-root {
+  display: flex;
+  flex-direction: column;
+}
+
+.talent-hero-section {
+  padding: var(--space-16) 0;
+  background-color: var(--color-evergreen-950);
+  color: var(--color-warm-white);
+  border-bottom: 1px solid var(--color-evergreen-900);
+  text-align: center;
+}
+
+.talent-hero-content {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.talent-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-evergreen-900);
+  border: 1px solid var(--color-brand-700);
+  color: var(--color-lime-400);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.talent-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  font-weight: 900;
+  color: var(--color-warm-white);
+}
+
+.talent-hero-subtitle {
+  font-size: 1.125rem;
+  color: var(--color-neutral-200);
+  line-height: 1.6;
+}
+
+.talent-hero-actions {
+  margin-top: var(--space-4);
+}
+
+.talent-benefits-section {
+  padding: var(--space-16) 0;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .benefits-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.benefit-card {
+  padding: var(--space-8);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.benefit-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background-color: var(--accent-highlight-bg);
+  color: var(--color-evergreen-950);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.benefit-card h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+
+  color: var(--text-primary);
+}
+
+.benefit-card p {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.talent-cta-section {
+  padding: var(--space-16) 0;
+  background-color: var(--color-evergreen-950);
+  color: var(--color-warm-white);
+  text-align: center;
+}

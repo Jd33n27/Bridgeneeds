@@ -1,0 +1,96 @@
+.services-page-root {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-16);
+}
+
+.services-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.services-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.services-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.services-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.services-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.category-pills-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.cat-pill {
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+  background-color: var(--bg-surface);
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.cat-pill.active {
+  background-color: var(--color-evergreen-950);
+  color: var(--color-lime-400);
+  border-color: var(--color-brand-700);
+}
+
+.services-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 640px) {
+  .services-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .services-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.empty-services-box {
+  padding: var(--space-12);
+  text-align: center;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.reset-btn {
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  background-color: var(--accent-primary);
+  color: var(--text-inverse);
+  font-weight: 700;
+  font-size: 0.875rem;
+}

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 48" fill="none" role="img" aria-label="BRIDGENEEDS Logo">
+  <!-- Symbol: Two interconnected geometric nodes bridging creative needs with talent -->
+  <g transform="translate(4, 4)">
+    <!-- Base Left Pillar (Creative Needs) -->
+    <rect x="2" y="14" width="8" height="22" rx="4" fill="#3978F6" />
+    
+    <!-- Base Right Pillar (Creative Talent) -->
+    <rect x="28" y="14" width="8" height="22" rx="4" fill="#3978F6" />
+    
+    <!-- Harmonic Arch / Bridge Structure -->
+    <path d="M6 16 C 6 4, 32 4, 32 16" stroke="#3978F6" stroke-width="4.5" stroke-linecap="round" fill="none" />
+    
+    <!-- Central Connection Apex (Meeting point) -->
+    <circle cx="19" cy="9.5" r="3.5" fill="#10233F" />
+    <circle cx="19" cy="9.5" r="1.5" fill="#FFFFFF" />
+
+    <!-- Subtle Connection Span line -->
+    <path d="M9 25 C 14 28, 24 28, 29 25" stroke="#3978F6" stroke-width="2.5" stroke-linecap="round" opacity="0.8" />
+  </g>
+
+  <!-- Wordmark: BRIDGENEEDS with deliberate spacing & contemporary geometry -->
+  <text x="54" y="30" font-family="'Manrope', 'Inter', system-ui, sans-serif" font-size="20" font-weight="800" letter-spacing="0.12em" fill="#10233F">
+    BRIDGE<tspan fill="#3978F6">NEEDS</tspan>
+  </text>
+</svg>
