@@ -1,15 +1,15 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Search, Menu, X, PlusCircle, Sparkles, User, SlidersHorizontal } from 'lucide-react';
 import { CreateBriefModal } from './CreateBriefModal';
 
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isBriefModalOpen, setIsBriefModalOpen] = useState(false);
-  const pathname = usePathname();
+  const { pathname } = useLocation();
 
   const navLinks = [
     { name: 'Discover', href: '/discover' },
@@ -27,7 +27,7 @@ export const Navbar: React.FC = () => {
           
           {/* Brand Logo */}
           <div className="flex items-center gap-6">
-            <Link href="/" className="flex items-center gap-2.5 group">
+            <Link to="/" className="flex items-center gap-2.5 group">
               <div className="w-10 h-10 rounded-xl bg-[#B7F34A] text-black flex items-center justify-center font-extrabold text-xl group-hover:scale-105 transition-transform shadow-md shadow-[#B7F34A]/20">
                 M
               </div>
@@ -48,7 +48,7 @@ export const Navbar: React.FC = () => {
                 return (
                   <Link
                     key={link.name}
-                    href={link.href}
+                    to={link.href}
                     className={`text-sm font-medium transition-colors ${
                       isActive ? 'text-[#B7F34A]' : 'text-zinc-300 hover:text-white'
                     }`}
@@ -64,7 +64,7 @@ export const Navbar: React.FC = () => {
           <div className="flex items-center gap-3">
             {/* Quick Search */}
             <Link
-              href="/discover"
+              to="/discover"
               className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 text-xs transition-colors"
             >
               <Search className="w-4 h-4 text-[#B7F34A]" />
@@ -83,7 +83,7 @@ export const Navbar: React.FC = () => {
 
             {/* Dashboards link */}
             <Link
-              href="/dashboard/client"
+              to="/dashboard/client"
               className="px-3 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white text-xs font-semibold transition-colors flex items-center gap-1.5"
               title="Dashboard"
             >
@@ -93,7 +93,7 @@ export const Navbar: React.FC = () => {
 
             {/* Join CTA */}
             <Link
-              href="/signup"
+              to="/signup"
               className="px-4 py-2 rounded-xl bg-[#B7F34A] text-black font-bold text-xs hover:bg-[#A4E235] transition-transform hover:scale-105 shadow-sm shadow-[#B7F34A]/20"
             >
               Join MAAS
@@ -116,7 +116,7 @@ export const Navbar: React.FC = () => {
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
-                  href={link.href}
+                  to={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className="block px-3 py-2 rounded-lg text-base font-semibold text-zinc-200 hover:bg-zinc-900 hover:text-[#B7F34A]"
                 >
