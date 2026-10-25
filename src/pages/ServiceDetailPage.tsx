@@ -260,3 +260,5 @@ export const ServiceDetailPage: React.FC = () => {
     </div>
   );
 };
+
+export default ServiceDetailPage;

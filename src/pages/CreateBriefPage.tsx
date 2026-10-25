@@ -25,3 +25,5 @@ export const CreateBriefPage: React.FC = () => {
     </div>
   );
 };
+
+export default CreateBriefPage;

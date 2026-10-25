@@ -413,3 +413,5 @@ export const ProjectWorkspacePage: React.FC = () => {
     </div>
   );
 };
+
+export default ProjectWorkspacePage;

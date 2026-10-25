@@ -87,3 +87,5 @@ export const ForTalentPage: React.FC = () => {
     </div>
   );
 };
+
+export default ForTalentPage;

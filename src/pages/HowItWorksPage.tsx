@@ -106,3 +106,5 @@ export const HowItWorksPage: React.FC = () => {
     </div>
   );
 };
+
+export default HowItWorksPage;

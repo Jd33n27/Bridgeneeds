@@ -87,3 +87,5 @@ export const ForBusinessPage: React.FC = () => {
     </div>
   );
 };
+
+export default ForBusinessPage;

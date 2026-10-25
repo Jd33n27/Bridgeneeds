@@ -396,3 +396,5 @@ export const TalentProfilePage: React.FC = () => {
     </div>
   );
 };
+
+export default TalentProfilePage;

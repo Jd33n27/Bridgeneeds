@@ -1,4 +1,5 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import { Header } from './layout/Header';
 import { Footer } from './Footer';
 import { Toast } from './ui/Toast';
@@ -7,7 +8,7 @@ import { useApp } from '../context/AppContext';
 import './AppShell.css';
 
 interface AppShellProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export const AppShell: React.FC<AppShellProps> = ({ children }) => {
@@ -18,7 +19,7 @@ export const AppShell: React.FC<AppShellProps> = ({ children }) => {
       <Header />
       
       <main className="app-main-content">
-        {children}
+        {children || <Outlet />}
       </main>
 
       <Footer />

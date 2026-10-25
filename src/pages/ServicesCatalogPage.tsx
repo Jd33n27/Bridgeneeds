@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Service } from '../types';
 import { getServices } from '../lib/services';
 import { ServiceCard } from '../components/ui/ServiceCard';
@@ -7,12 +8,24 @@ import { SearchBar } from '../components/ui/SearchBar';
 import './ServicesCatalogPage.css';
 
 export const ServicesCatalogPage: React.FC = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialCategory = searchParams.get('category') || 'All';
+  const initialQuery = searchParams.get('q') || '';
+
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
+  const [searchQuery, setSearchQuery] = useState<string>(initialQuery);
 
   const categories = ['All', 'Production', 'Mixing', 'Mastering', 'Songwriting', 'Vocals', 'Instrumental'];
+
+  // Keep state in sync with URL parameters if user navigates back/forward
+  useEffect(() => {
+    const cat = searchParams.get('category') || 'All';
+    const q = searchParams.get('q') || '';
+    setSelectedCategory(cat);
+    setSearchQuery(q);
+  }, [searchParams]);
 
   useEffect(() => {
     let isMounted = true;
@@ -29,6 +42,34 @@ export const ServicesCatalogPage: React.FC = () => {
       isMounted = false;
     };
   }, [selectedCategory]);
+
+  const handleCategoryChange = (cat: string) => {
+    setSelectedCategory(cat);
+    const newParams = new URLSearchParams(searchParams);
+    if (cat === 'All') {
+      newParams.delete('category');
+    } else {
+      newParams.set('category', cat);
+    }
+    setSearchParams(newParams);
+  };
+
+  const handleSearchChange = (val: string) => {
+    setSearchQuery(val);
+    const newParams = new URLSearchParams(searchParams);
+    if (!val.trim()) {
+      newParams.delete('q');
+    } else {
+      newParams.set('q', val);
+    }
+    setSearchParams(newParams);
+  };
+
+  const handleResetFilters = () => {
+    setSelectedCategory('All');
+    setSearchQuery('');
+    setSearchParams({});
+  };
 
   const filteredServices = services.filter((s) => {
     if (!searchQuery.trim()) return true;
@@ -56,7 +97,7 @@ export const ServicesCatalogPage: React.FC = () => {
           <div className="search-flex">
             <SearchBar
               value={searchQuery}
-              onChange={setSearchQuery}
+              onChange={handleSearchChange}
               placeholder="Search packaged services by keyword, outcome, or provider..."
             />
           </div>
@@ -67,7 +108,7 @@ export const ServicesCatalogPage: React.FC = () => {
                 key={cat}
                 type="button"
                 className={`cat-pill ${selectedCategory === cat ? 'active' : ''}`}
-                onClick={() => setSelectedCategory(cat)}
+                onClick={() => handleCategoryChange(cat)}
               >
                 {cat}
               </button>
@@ -89,10 +130,7 @@ export const ServicesCatalogPage: React.FC = () => {
             <button
               type="button"
               className="reset-btn"
-              onClick={() => {
-                setSelectedCategory('All');
-                setSearchQuery('');
-              }}
+              onClick={handleResetFilters}
             >
               Reset Filters
             </button>
@@ -103,3 +141,5 @@ export const ServicesCatalogPage: React.FC = () => {
     </div>
   );
 };
+
+export default ServicesCatalogPage;

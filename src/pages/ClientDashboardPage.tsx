@@ -145,3 +145,5 @@ export const ClientDashboardPage: React.FC = () => {
     </div>
   );
 };
+
+export default ClientDashboardPage;

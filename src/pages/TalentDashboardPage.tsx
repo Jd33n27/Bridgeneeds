@@ -114,3 +114,5 @@ export const TalentDashboardPage: React.FC = () => {
     </div>
   );
 };
+
+export default TalentDashboardPage;

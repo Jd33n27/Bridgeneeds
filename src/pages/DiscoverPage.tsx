@@ -174,3 +174,5 @@ export const DiscoverPage: React.FC = () => {
     </div>
   );
 };
+
+export default DiscoverPage;

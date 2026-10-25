@@ -3,6 +3,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { TalentCard } from '../components/ui/TalentCard';
+import { ServiceCard } from '../components/ui/ServiceCard';
 import { VerificationBadge } from '../components/ui/VerificationBadge';
 import { RatingSummary } from '../components/ui/RatingSummary';
 import { MOCK_TALENT } from '../data/mockData';
@@ -54,3 +55,49 @@ describe('searchTalent Service Function', () => {
     expect(results.some((t) => t.primaryRole.includes('Producer') || t.skills.some((s) => s.toLowerCase().includes('production')))).toBe(true);
   });
 });
+
+describe('ServiceCard and Services Catalog', () => {
+  it('renders service card with link to /services/:id', () => {
+    const mockService = {
+      id: 'srv-test-1',
+      talentId: 'talent-1',
+      talentName: 'Elena Rostova',
+      talentAvatar: 'https://example.com/avatar.jpg',
+      talentRole: 'Mixing Engineer',
+      talentLocation: 'London, UK',
+      title: 'Full Stems Mixing',
+      category: 'Mixing',
+      shortDescription: 'Professional analog mixdown',
+      fullDescription: 'Detailed mix breakdown',
+      outcome: 'Release ready WAV',
+      startingPrice: 350,
+      deliveryDays: 3,
+      revisionsPolicy: '2 rounds included',
+      clientRequirements: ['Send WAV stems'],
+      packages: [],
+      tags: ['mixing', 'analog'],
+      genres: ['Pop'],
+      coverImage: 'https://example.com/cover.jpg',
+      rating: 4.9,
+      reviewCount: 15,
+      featuredWork: []
+    };
+
+    render(
+      <MemoryRouter>
+        <AppProvider>
+          <ServiceCard service={mockService} />
+        </AppProvider>
+      </MemoryRouter>
+    );
+
+    expect(screen.getByText('Full Stems Mixing')).toBeInTheDocument();
+    expect(screen.getByText('Elena Rostova')).toBeInTheDocument();
+    expect(screen.getByText('$350')).toBeInTheDocument();
+    
+    const links = screen.getAllByRole('link');
+    const serviceLink = links.find((l) => l.getAttribute('href') === '/services/srv-test-1');
+    expect(serviceLink).toBeDefined();
+  });
+});
+
