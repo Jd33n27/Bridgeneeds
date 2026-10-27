@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { X, Check, Music, DollarSign, Calendar, Sparkles, Send, FileText } from 'lucide-react';
 import { CategoryType } from '@/types';
+import './CreateBriefModal.css';
 
 interface CreateBriefModalProps {
   isOpen: boolean;
@@ -51,86 +52,85 @@ export const CreateBriefModal: React.FC<CreateBriefModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="relative w-full max-w-2xl bg-zinc-900 border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden text-left">
+    <div className="brief-modal-backdrop" onClick={onClose}>
+      <div className="brief-modal-card" onClick={(e) => e.stopPropagation()}>
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-800">
+        <div className="brief-modal-header">
           <div>
-            <h3 className="text-lg font-bold text-white flex items-center gap-2">
-              <FileText className="w-5 h-5 text-[#B7F34A]" />
+            <h3>
+              <FileText size={18} color="#B7F34A" />
               <span>Create Project Brief</span>
             </h3>
-            <p className="text-xs text-zinc-400">Define your scope to receive verified proposals from talent</p>
+            <p>Define your scope to receive verified proposals from talent</p>
           </div>
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-zinc-800 text-zinc-400 hover:text-white flex items-center justify-center transition-colors"
+            className="brief-modal-close-btn"
+            aria-label="Close modal"
           >
-            <X className="w-4 h-4" />
+            <X size={16} />
           </button>
         </div>
 
         {/* Progress Bar */}
-        <div className="w-full bg-zinc-800 h-1">
+        <div className="brief-modal-progress-track">
           <div
-            className="bg-[#B7F34A] h-1 transition-all duration-300"
+            className="brief-modal-progress-fill"
             style={{ width: `${(step / 4) * 100}%` }}
           />
         </div>
 
         {submitted ? (
-          <div className="p-8 text-center space-y-4">
-            <div className="w-16 h-16 rounded-full bg-[#B7F34A]/20 text-[#B7F34A] border border-[#B7F34A]/40 flex items-center justify-center mx-auto animate-bounce">
-              <Sparkles className="w-8 h-8" />
+          <div className="brief-success-view">
+            <div className="brief-success-icon">
+              <Sparkles size={32} />
             </div>
-            <h3 className="text-xl font-bold text-white">Brief Published to MAAS Network!</h3>
-            <p className="text-sm text-zinc-300 max-w-md mx-auto">
-              Your brief for <span className="text-[#B7F34A] font-semibold">{formData.title || 'Afrobeats Single'}</span> is now live. Top producers and engineers are being notified.
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#FFFFFF' }}>
+              Brief Published to MAAS Network!
+            </h3>
+            <p style={{ fontSize: '0.875rem', color: '#D4D4D8', maxWidth: '420px', lineHeight: 1.6 }}>
+              Your brief for <strong style={{ color: '#B7F34A' }}>{formData.title || 'Afrobeats Single'}</strong> is now live. Top producers and engineers are being notified.
             </p>
-            <div className="pt-4">
+            <div style={{ paddingTop: '16px' }}>
               <button
                 onClick={() => {
                   setSubmitted(false);
                   setStep(1);
                   onClose();
                 }}
-                className="px-6 py-2.5 rounded-xl text-sm font-bold bg-[#B7F34A] text-black hover:bg-[#A4E235] transition-colors"
+                className="brief-btn-next"
               >
                 Go to Client Dashboard
               </button>
             </div>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="p-6 space-y-6">
+          <form onSubmit={handleSubmit} className="brief-modal-body">
             {step === 1 && (
-              <div className="space-y-4">
-                <h4 className="text-sm font-semibold text-zinc-300 uppercase tracking-wider">Step 1: Category & Title</h4>
+              <div>
+                <h4 className="brief-modal-step-title">Step 1: Category & Title</h4>
                 
-                <div>
-                  <label className="block text-xs font-semibold text-zinc-300 mb-1.5">Project Title</label>
+                <div className="brief-form-group">
+                  <label className="brief-form-label">Project Title</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. Afrobeats Lead Single Production & Vocal Mix"
                     value={formData.title}
                     onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-white text-sm focus:outline-none focus:border-[#B7F34A]"
+                    className="brief-form-input"
                   />
                 </div>
 
-                <div>
-                  <label className="block text-xs font-semibold text-zinc-300 mb-2">Service Category</label>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                <div className="brief-form-group">
+                  <label className="brief-form-label">Service Category</label>
+                  <div className="brief-categories-grid">
                     {categories.map((cat) => (
                       <button
                         key={cat}
                         type="button"
                         onClick={() => setFormData({ ...formData, category: cat })}
-                        className={`p-2.5 rounded-xl text-xs font-medium border text-left transition-all ${
-                          formData.category === cat
-                            ? 'bg-[#B7F34A]/10 border-[#B7F34A] text-[#B7F34A]'
-                            : 'bg-zinc-950 border-zinc-800 text-zinc-400 hover:border-zinc-700'
-                        }`}
+                        className={`brief-category-chip ${formData.category === cat ? 'active' : ''}`}
                       >
                         {cat}
                       </button>
@@ -141,97 +141,97 @@ export const CreateBriefModal: React.FC<CreateBriefModalProps> = ({
             )}
 
             {step === 2 && (
-              <div className="space-y-4">
-                <h4 className="text-sm font-semibold text-zinc-300 uppercase tracking-wider">Step 2: Project Scope & References</h4>
+              <div>
+                <h4 className="brief-modal-step-title">Step 2: Project Scope & References</h4>
 
-                <div>
-                  <label className="block text-xs font-semibold text-zinc-300 mb-1.5">Detailed Requirements</label>
+                <div className="brief-form-group">
+                  <label className="brief-form-label">Detailed Requirements</label>
                   <textarea
                     rows={4}
                     required
                     placeholder="Describe what you need: instrumentation, vibe, arrangement, vocal tuning, stems required..."
                     value={formData.requirements}
                     onChange={(e) => setFormData({ ...formData, requirements: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-white text-sm focus:outline-none focus:border-[#B7F34A]"
+                    className="brief-form-textarea"
                   />
                 </div>
 
-                <div>
-                  <label className="block text-xs font-semibold text-zinc-300 mb-1.5">Reference Songs (Spotify / YouTube Links)</label>
+                <div className="brief-form-group">
+                  <label className="brief-form-label">Reference Songs (Spotify / YouTube Links)</label>
                   <input
                     type="url"
                     placeholder="https://spotify.com/track/..."
                     value={formData.referenceTrack}
                     onChange={(e) => setFormData({ ...formData, referenceTrack: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-white text-sm focus:outline-none focus:border-[#B7F34A]"
+                    className="brief-form-input"
                   />
                 </div>
               </div>
             )}
 
             {step === 3 && (
-              <div className="space-y-4">
-                <h4 className="text-sm font-semibold text-zinc-300 uppercase tracking-wider">Step 3: Budget & Timeline</h4>
+              <div>
+                <h4 className="brief-modal-step-title">Step 3: Budget & Timeline</h4>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-semibold text-zinc-300 mb-1.5">Min Budget (₦)</label>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                  <div className="brief-form-group">
+                    <label className="brief-form-label">Min Budget (₦)</label>
                     <input
                       type="number"
                       value={formData.budgetMin}
                       onChange={(e) => setFormData({ ...formData, budgetMin: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-white text-sm focus:outline-none focus:border-[#B7F34A]"
+                      className="brief-form-input"
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-xs font-semibold text-zinc-300 mb-1.5">Max Budget (₦)</label>
+                  <div className="brief-form-group">
+                    <label className="brief-form-label">Max Budget (₦)</label>
                     <input
                       type="number"
                       value={formData.budgetMax}
                       onChange={(e) => setFormData({ ...formData, budgetMax: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-white text-sm focus:outline-none focus:border-[#B7F34A]"
+                      className="brief-form-input"
                     />
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-xs font-semibold text-zinc-300 mb-1.5">Target Completion Date</label>
+                <div className="brief-form-group">
+                  <label className="brief-form-label">Target Completion Date</label>
                   <input
                     type="date"
                     value={formData.deadline}
                     onChange={(e) => setFormData({ ...formData, deadline: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-white text-sm focus:outline-none focus:border-[#B7F34A]"
+                    className="brief-form-input"
                   />
                 </div>
               </div>
             )}
 
             {step === 4 && (
-              <div className="space-y-4">
-                <h4 className="text-sm font-semibold text-zinc-300 uppercase tracking-wider">Step 4: Review Brief Details</h4>
+              <div>
+                <h4 className="brief-modal-step-title">Step 4: Review Brief Details</h4>
 
-                <div className="bg-zinc-950 rounded-xl p-4 border border-zinc-800 space-y-2 text-xs">
-                  <div className="flex justify-between text-zinc-400">
+                <div style={{ backgroundColor: 'var(--color-evergreen-950, #0B0B0D)', borderRadius: '12px', padding: '16px', border: '1px solid var(--color-evergreen-800, #27272A)', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.8125rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', color: '#A1A1AA' }}>
                     <span>Title:</span>
-                    <span className="font-semibold text-white">{formData.title || 'Afrobeats Single'}</span>
+                    <strong style={{ color: '#FFFFFF' }}>{formData.title || 'Afrobeats Single'}</strong>
                   </div>
-                  <div className="flex justify-between text-zinc-400">
+                  <div style={{ display: 'flex', justifyContent: 'space-between', color: '#A1A1AA' }}>
                     <span>Category:</span>
-                    <span className="font-semibold text-[#B7F34A]">{formData.category}</span>
+                    <strong style={{ color: '#B7F34A' }}>{formData.category}</strong>
                   </div>
-                  <div className="flex justify-between text-zinc-400">
+                  <div style={{ display: 'flex', justifyContent: 'space-between', color: '#A1A1AA' }}>
                     <span>Budget Range:</span>
-                    <span className="font-semibold text-white">₦{Number(formData.budgetMin).toLocaleString()} - ₦{Number(formData.budgetMax).toLocaleString()}</span>
+                    <strong style={{ color: '#FFFFFF' }}>₦{Number(formData.budgetMin).toLocaleString()} - ₦{Number(formData.budgetMax).toLocaleString()}</strong>
                   </div>
-                  <div className="flex justify-between text-zinc-400">
+                  <div style={{ display: 'flex', justifyContent: 'space-between', color: '#A1A1AA' }}>
                     <span>Deadline:</span>
-                    <span className="font-semibold text-white">{formData.deadline}</span>
+                    <strong style={{ color: '#FFFFFF' }}>{formData.deadline}</strong>
                   </div>
                   {formData.requirements && (
-                    <div className="pt-2 border-t border-zinc-800 text-zinc-400">
-                      <span className="block mb-1">Requirements:</span>
-                      <p className="text-zinc-200 italic">{formData.requirements}</p>
+                    <div style={{ paddingTop: '8px', borderTop: '1px solid #27272A', color: '#A1A1AA' }}>
+                      <span style={{ display: 'block', marginBottom: '4px' }}>Requirements:</span>
+                      <p style={{ color: '#E4E4E7', fontStyle: 'italic' }}>{formData.requirements}</p>
                     </div>
                   )}
                 </div>
@@ -239,12 +239,12 @@ export const CreateBriefModal: React.FC<CreateBriefModalProps> = ({
             )}
 
             {/* Navigation buttons */}
-            <div className="flex items-center justify-between pt-4 border-t border-zinc-800">
+            <div className="brief-modal-actions">
               {step > 1 ? (
                 <button
                   type="button"
                   onClick={() => setStep(step - 1)}
-                  className="px-4 py-2 rounded-xl text-xs font-semibold bg-zinc-800 text-white hover:bg-zinc-700 transition-colors"
+                  className="brief-btn-back"
                 >
                   Back
                 </button>
@@ -256,16 +256,16 @@ export const CreateBriefModal: React.FC<CreateBriefModalProps> = ({
                 <button
                   type="button"
                   onClick={() => setStep(step + 1)}
-                  className="px-5 py-2 rounded-xl text-xs font-bold bg-[#B7F34A] text-black hover:bg-[#A4E235] transition-colors"
+                  className="brief-btn-next"
                 >
                   Next Step
                 </button>
               ) : (
                 <button
                   type="submit"
-                  className="px-6 py-2.5 rounded-xl text-xs font-bold bg-[#B7F34A] text-black hover:bg-[#A4E235] transition-colors flex items-center gap-1.5"
+                  className="brief-btn-next"
                 >
-                  <Send className="w-4 h-4" />
+                  <Send size={16} />
                   <span>Publish Brief</span>
                 </button>
               )}
