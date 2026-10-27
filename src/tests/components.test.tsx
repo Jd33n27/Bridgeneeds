@@ -1,3 +1,5 @@
+import { formatCurrency } from '../lib/utils';
+import { CategoryCard } from '../components/CategoryCard';
 import { describe, it, expect } from 'vitest';
 import React from 'react';
 import { render, screen } from '@testing-library/react';
@@ -101,3 +103,39 @@ describe('ServiceCard and Services Catalog', () => {
   });
 });
 
+
+describe('formatCurrency utility', () => {
+  it('formats valid numbers with default and custom currency symbols', () => {
+    expect(formatCurrency(100000)).toBe('₦100,000');
+    expect(formatCurrency(50000, '$')).toBe('$50,000');
+    expect(formatCurrency(0)).toBe('₦0');
+  });
+
+  it('safely handles undefined, null, NaN, and string inputs without throwing', () => {
+    expect(formatCurrency(undefined)).toBe('₦0');
+    expect(formatCurrency(null)).toBe('₦0');
+    expect(formatCurrency(NaN)).toBe('₦0');
+    expect(formatCurrency('invalid' as any)).toBe('₦0');
+    expect(formatCurrency('25000' as any)).toBe('₦25,000');
+  });
+});
+
+describe('CategoryCard component', () => {
+  it('renders safely when startingFrom is undefined or missing', () => {
+    const incompleteCategory = {
+      id: 'cat-test',
+      name: 'Vocal Performance',
+      description: 'Session singers and choirs',
+    };
+
+    render(
+      <MemoryRouter>
+        <CategoryCard category={incompleteCategory as any} />
+      </MemoryRouter>
+    );
+
+    expect(screen.getByText('Vocal Performance')).toBeInTheDocument();
+    expect(screen.getByText('Starting from')).toBeInTheDocument();
+    expect(screen.getByText('₦0')).toBeInTheDocument();
+  });
+});

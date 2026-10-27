@@ -7,6 +7,7 @@ import { ServiceCard } from '../components/ui/ServiceCard';
 import { CategoryCard } from '../components/CategoryCard';
 import { ProjectTimeline } from '../components/ui/ProjectTimeline';
 import { CreateBriefModal } from '../components/CreateBriefModal';
+import { mockCategories } from '../data/mockServices';
 import { useApp } from '../context/AppContext';
 import './HomePage.css';
 
@@ -24,12 +25,7 @@ export const HomePage: React.FC = () => {
     'Session Guitarist'
   ];
 
-  const categories = [
-    { id: 'cat-1', title: 'Music Production', iconName: 'Sliders', count: 420, description: 'Beatmakers, executive producers & arrangers', categoryName: 'Production' },
-    { id: 'cat-2', title: 'Mixing & Mastering', iconName: 'Headphones', count: 310, description: 'Analog & digital mixing engineers', categoryName: 'Mixing' },
-    { id: 'cat-3', title: 'Vocalists & Choirs', iconName: 'Users', count: 280, description: 'Lead vocals, backing & vocal tuning', categoryName: 'Vocals' },
-    { id: 'cat-4', title: 'Songwriting', iconName: 'Disc', count: 190, description: 'Topliners, lyricists & melody writers', categoryName: 'Songwriting' }
-  ];
+  const categories = mockCategories.slice(0, 4);
 
   const timelineStepsDemo = [
     { id: '1', title: 'Brief Submitted', description: 'Client outlines requirements, style references & budget', date: '01 Oct', status: 'completed' as const },

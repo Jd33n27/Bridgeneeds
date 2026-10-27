@@ -13,7 +13,7 @@ import { authService } from '../services/auth';
 import BrandLogo from '../components/auth/BrandLogo';
 import AccountTypeSelector from '../components/auth/AccountTypeSelector';
 import PasswordField from '../components/auth/PasswordField';
-import SignupPage from '../pages/SignupPage';
+import SignupPage from '../pages/SignUpPage';
 import LoginPage from '../pages/LoginPage';
 import ForgotPasswordPage from '../pages/ForgotPasswordPage';
 

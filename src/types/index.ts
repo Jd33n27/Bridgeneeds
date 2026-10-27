@@ -253,3 +253,55 @@ export interface TalentFilterState {
   availability: string;
   verifiedOnly: boolean;
 }
+
+
+export type CategoryType = 
+  | 'Production'
+  | 'Mixing'
+  | 'Mastering'
+  | 'Songwriting'
+  | 'Vocals'
+  | 'Musicians'
+  | 'Music Direction'
+  | 'Sound Design'
+  | string;
+
+export interface CategoryCardData {
+  id: string;
+  name?: string;
+  title?: string;
+  categoryName?: string;
+  description: string;
+  image?: string;
+  iconName?: string;
+  talentCount?: number;
+  count?: number;
+  startingFrom?: number;
+}
+
+export interface ProjectTimelineStep {
+  id?: string;
+  label?: string;
+  title?: string;
+  description?: string;
+  date?: string;
+  status: 'completed' | 'current' | 'upcoming';
+}
+
+export interface ServiceItem {
+  id: string;
+  title: string;
+  category: string;
+  talentId?: string;
+  talentName?: string;
+  talentAvatar?: string;
+  description: string;
+  deliveryTimeDays?: number;
+  revisions?: number | string;
+  includes?: string[];
+  startingPrice?: number;
+  currency?: string;
+  rating?: number;
+  reviewsCount?: number;
+  popular?: boolean;
+}
