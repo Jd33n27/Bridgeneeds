@@ -195,7 +195,7 @@
 
 .rate-box {
   display: flex;
-  align-baseline;
+  align-items: baseline;
   gap: 2px;
 }
 

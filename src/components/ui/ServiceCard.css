@@ -132,7 +132,7 @@
 
 .price-tag {
   display: flex;
-  align-baseline;
+  align-items: baseline;
   gap: 4px;
 }
 

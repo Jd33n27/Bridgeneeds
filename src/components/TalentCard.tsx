@@ -1,7 +1,5 @@
-'use client';
-
 import React from 'react';
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
 import { MapPin, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import { TalentProfile } from '@/types';
 import { Rating } from './Rating';
@@ -34,7 +32,7 @@ export const TalentCard: React.FC<TalentCardProps> = ({ talent }) => {
 
         {/* Title & Info */}
         <div className="mb-3">
-          <Link href={`/talent/${talent.id}`}>
+          <Link to={`/talent/${talent.id}`}>
             <h3 className="text-lg font-bold text-white group-hover:text-[#B7F34A] transition-colors flex items-center justify-between">
               <span>{talent.name}</span>
               <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-[#B7F34A]" />
@@ -81,7 +79,7 @@ export const TalentCard: React.FC<TalentCardProps> = ({ talent }) => {
         </div>
 
         <Link
-          href={`/talent/${talent.id}`}
+          to={`/talent/${talent.id}`}
           className="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-zinc-800 text-white hover:bg-[#B7F34A] hover:text-black transition-colors"
         >
           View Profile

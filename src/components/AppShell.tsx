@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header } from './layout/Header';
 import { Footer } from './Footer';
-import { Toast } from './ui/Toast';
+import { ToastContainer } from './ui/Toast';
 import { AudioPlayer } from './AudioPlayer';
 import { useApp } from '../context/AppContext';
 import './AppShell.css';
@@ -12,7 +12,7 @@ interface AppShellProps {
 }
 
 export const AppShell: React.FC<AppShellProps> = ({ children }) => {
-  const { toasts, dismissToast, activeTrack, isPlaying, pauseTrack } = useApp();
+  const { activeTrack, isPlaying, pauseTrack } = useApp();
 
   return (
     <div className="app-shell-root">
@@ -40,16 +40,7 @@ export const AppShell: React.FC<AppShellProps> = ({ children }) => {
       )}
 
       {/* Toast Notification Container */}
-      <div className="toast-container" role="status" aria-live="polite">
-        {toasts.map((toast) => (
-          <Toast
-            key={toast.id}
-            message={toast.message}
-            type={toast.type}
-            onClose={() => dismissToast(toast.id)}
-          />
-        ))}
-      </div>
+      <ToastContainer />
     </div>
   );
 };
