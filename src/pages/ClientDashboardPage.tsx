@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FileText, PlusCircle, Clock, CheckCircle2, ShieldCheck, ArrowRight, User } from 'lucide-react';
-import { MOCK_BRIEFS, MOCK_PROPOSALS } from '../data/mockData';
+import { MOCK_BRIEFS } from '../data/mockData';
+import { mockProposals } from '../data/mockBriefs';
 import { getStoredProjects, saveStoredProjects, getStoredBriefs } from '../lib/storage';
 import { Button } from '../components/ui/Button';
 import { ProjectCard } from '../components/ui/ProjectCard';
@@ -17,7 +18,7 @@ export const ClientDashboardPage: React.FC = () => {
 
   const [projects, setProjects] = useState(() => getStoredProjects());
   const [briefs, setBriefs] = useState(() => getStoredBriefs());
-  const [proposals, setProposals] = useState(MOCK_PROPOSALS);
+  const [proposals, setProposals] = useState(mockProposals);
   const [isBriefModalOpen, setIsBriefModalOpen] = useState(false);
 
   const handleAcceptProposal = (propId: string) => {

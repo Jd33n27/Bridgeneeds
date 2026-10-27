@@ -14,4 +14,10 @@ export default defineConfig({
     port: 3000,
     open: false,
   },
+  build: {
+    rollupOptions: {
+      // Exclude legacy Next.js app directory from the build
+      external: (id) => id.startsWith('next/'),
+    },
+  },
 });

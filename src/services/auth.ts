@@ -131,20 +131,20 @@ function recordFailedAttempt(email: string): { locked: boolean; remainingSec?: n
     state.lockedUntil = now + LOCKOUT_DURATION_MS;
     try {
       sessionStorage.setItem(`${RATE_LIMIT_KEY}_${email.toLowerCase()}`, JSON.stringify(state));
-    } catch {}
+    } catch { /* sessionStorage may be unavailable in private mode */ }
     return { locked: true, remainingSec: Math.ceil(LOCKOUT_DURATION_MS / 1000) };
   }
 
   try {
     sessionStorage.setItem(`${RATE_LIMIT_KEY}_${email.toLowerCase()}`, JSON.stringify(state));
-  } catch {}
+  } catch { /* sessionStorage may be unavailable in private mode */ }
   return { locked: false };
 }
 
 function clearRateLimit(email: string): void {
   try {
     sessionStorage.removeItem(`${RATE_LIMIT_KEY}_${email.toLowerCase()}`);
-  } catch {}
+  } catch { /* sessionStorage may be unavailable in private mode */ }
 }
 
 /**
@@ -183,7 +183,7 @@ class AuthenticationService {
       if (rememberMe) {
         localStorage.setItem('bridgeneeds_remembered_email', session.user.email);
       }
-    } catch {}
+    } catch { /* sessionStorage may be unavailable in private mode */ }
     this.notifySubscribers();
   }
 
@@ -343,7 +343,7 @@ class AuthenticationService {
     this.activeSession = null;
     try {
       sessionStorage.removeItem(SESSION_STORAGE_KEY);
-    } catch {}
+    } catch { /* sessionStorage may be unavailable in private mode */ }
     this.notifySubscribers();
   }
 

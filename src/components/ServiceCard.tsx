@@ -1,7 +1,5 @@
-'use client';
-
 import React from 'react';
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
 import { Clock, RefreshCw, Check, ArrowRight } from 'lucide-react';
 import { ServiceItem } from '@/types';
 import { formatCurrency } from '@/lib/utils';
@@ -29,7 +27,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, onHireClick }
         </div>
 
         {/* Title */}
-        <Link href={`/services/${service.id}`}>
+        <Link to={`/services/${service.id}`}>
           <h3 className="text-lg font-bold text-white group-hover:text-[#B7F34A] transition-colors mb-2">
             {service.title}
           </h3>
@@ -94,7 +92,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, onHireClick }
           </button>
         ) : (
           <Link
-            href={`/services/${service.id}`}
+            to={`/services/${service.id}`}
             className="px-4 py-2 rounded-lg text-xs font-bold bg-[#B7F34A] text-black hover:bg-[#A4E235] transition-colors flex items-center gap-1"
           >
             <span>View Service</span>

@@ -322,3 +322,5 @@ export const SignupPage: React.FC = () => {
 };
 
 export default SignupPage;
+export { SignupPage as SignUpPage };
+

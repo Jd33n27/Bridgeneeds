@@ -1,7 +1,5 @@
-'use client';
-
 import React from 'react';
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
 import { ArrowUpRight, Music } from 'lucide-react';
 import { CategoryCardData } from '@/types';
 import { formatCurrency } from '@/lib/utils';
@@ -13,7 +11,7 @@ interface CategoryCardProps {
 export const CategoryCard: React.FC<CategoryCardProps> = ({ category }) => {
   return (
     <Link
-      href={`/discover?category=${encodeURIComponent(category.name)}`}
+      to={`/discover?category=${encodeURIComponent(category.name)}`}
       className="group relative h-64 rounded-2xl overflow-hidden border border-zinc-800/80 p-5 flex flex-col justify-between transition-all duration-300 hover:border-[#B7F34A]/50 hover:shadow-xl hover:shadow-black/60 hover:-translate-y-1"
     >
       {/* Background image & gradient overlay */}
